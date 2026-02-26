@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Solapur Municipal Corp",
+    "slug": "solapur-municipal-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#0D47A1",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.solapurmunicipal.certificates"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0D47A1"
+      },
+      "package": "com.solapurmunicipal.certificates"
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-asset"
+    ]
+  }
+}
