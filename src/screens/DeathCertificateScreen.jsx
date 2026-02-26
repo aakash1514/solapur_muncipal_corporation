@@ -40,7 +40,7 @@ const DeathCertificateScreen = ({ navigation }) => {
     applicantAddress: '',
     email: '',
     deceasedName: '',
-    dateOfDeath: '',
+    dateOfDeath: null,
     gender: '',
     placeOfDeath: '',
     deceasedAadhar: '',
@@ -71,7 +71,7 @@ const DeathCertificateScreen = ({ navigation }) => {
 
     // Deceased
     if (!isNotEmpty(form.deceasedName)) e.deceasedName = 'मयताचे नाव आवश्यक आहे';
-    if (!isNotEmpty(form.dateOfDeath)) e.dateOfDeath = 'मृत्यू दिनांक आवश्यक आहे';
+    if (!form.dateOfDeath) e.dateOfDeath = 'मृत्यू दिनांक आवश्यक आहे';
     if (!form.gender) e.gender = 'लिंग निवडणे आवश्यक आहे';
     if (!isNotEmpty(form.placeOfDeath)) e.placeOfDeath = 'मृत्यू ठिकाण आवश्यक आहे';
     if (!isValidAadhar(form.deceasedAadhar)) e.deceasedAadhar = 'वैध 12 अंकी आधार क्रमांक आवश्यक';
@@ -225,10 +225,8 @@ const DeathCertificateScreen = ({ navigation }) => {
             labelMarathi="मृत्यू दिनांक"
             labelEnglish="Date of Death"
             value={form.dateOfDeath}
-            onPress={() => {
-              // TODO: Integrate @react-native-community/datetimepicker
-              updateField('dateOfDeath', '10/01/2026');
-            }}
+            onChange={(date) => updateField('dateOfDeath', date)}
+            maximumDate={new Date()}
             error={errors.dateOfDeath}
             required
           />

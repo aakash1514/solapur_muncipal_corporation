@@ -42,7 +42,7 @@ const BirthCertificateScreen = ({ navigation }) => {
     motherName: '',
     motherAadhar: '',
     motherMobile: '',
-    childDOB: '',
+    childDOB: null,
     gender: '',
     birthPlace: '',
     childNameMarathi: '',
@@ -75,7 +75,7 @@ const BirthCertificateScreen = ({ navigation }) => {
     if (!isValidAadhar(form.motherAadhar)) e.motherAadhar = 'वैध 12 अंकी आधार क्रमांक आवश्यक';
     if (!isValidMobile(form.motherMobile)) e.motherMobile = 'वैध 10 अंकी मोबाईल क्रमांक आवश्यक';
 
-    if (!isNotEmpty(form.childDOB)) e.childDOB = 'जन्म दिनांक आवश्यक आहे';
+    if (!form.childDOB) e.childDOB = 'जन्म दिनांक आवश्यक आहे';
     if (!form.gender) e.gender = 'लिंग निवडणे आवश्यक आहे';
     if (!form.birthPlace) e.birthPlace = 'जन्म ठिकाण निवडणे आवश्यक आहे';
     if (!isNotEmpty(form.childNameMarathi)) e.childNameMarathi = 'बाळाचे मराठी नाव आवश्यक आहे';
@@ -262,11 +262,8 @@ const BirthCertificateScreen = ({ navigation }) => {
             labelMarathi="बाळाचा जन्म दिनांक"
             labelEnglish="Child's Date of Birth"
             value={form.childDOB}
-            onPress={() => {
-              // TODO: Integrate @react-native-community/datetimepicker
-              // For demo, set a sample date
-              updateField('childDOB', '15/08/2025');
-            }}
+            onChange={(date) => updateField('childDOB', date)}
+            maximumDate={new Date()}
             error={errors.childDOB}
             required
           />
